@@ -1,5 +1,6 @@
 package com.alura.dimello
 
+import com.google.gson.Gson
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -19,11 +20,8 @@ fun main() {
     val json = response.body()
     println(json)
 
-    val meuJogo = Jogo(
-        "Batman: Arkham Asylum Game of the Year Edition",
-        "https:\\/\\/shared.fastly.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/35140\\/capsule_sm_120.jpg?t=1702934705")
-
-    
+    val gson = Gson()
+    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
 
     println(meuJogo)
 }
